@@ -1,0 +1,21 @@
+{
+  "name": "purescript-strongcheck-argonaut",
+  "homepage": "https://github.com/purescript-contrib/purescript-strongcheck-argonaut",
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/purescript-contrib/purescript-strongcheck-argonaut.git"
+  },
+  "ignore": [
+    "**/.*",
+    "bower_components",
+    "node_modules",
+    "output",
+    "bower.json",
+    "package.json"
+  ],
+  "dependencies": {
+    "purescript-strongcheck": "^2.0.1",
+    "purescript-argonaut": "^2.0.0"
+  }
+}
