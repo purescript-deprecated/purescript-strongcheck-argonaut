@@ -22,15 +22,17 @@ import Control.Monad.Eff.Console (log)
 
 import Data.Argonaut (decodeJson, encodeJson)
 import Data.Either (Either(..))
+import Data.Newtype (traverse)
 
 import Test.StrongCheck (SC, quickCheck, (===))
-import Test.StrongCheck.Data.Argonaut (runArbJCursor, runArbJson)
+import Test.StrongCheck.Data.Argonaut (ArbJson(..), ArbJCursor(..))
 
 main ∷ ∀ eff. SC eff Unit
 main = do
-
   log "Check codecs for Json"
-  quickCheck (runArbJson >>> \x -> Right x === decodeJson (encodeJson x))
+  quickCheck \(x ∷ ArbJson) →
+    Right x === traverse ArbJson (decodeJson <<< encodeJson) x
 
   log "Check codecs for JCursor"
-  quickCheck (runArbJCursor >>> \x -> Right x === decodeJson (encodeJson x))
+  quickCheck \(x ∷ ArbJCursor) →
+    Right x === traverse ArbJCursor (decodeJson <<< encodeJson) x

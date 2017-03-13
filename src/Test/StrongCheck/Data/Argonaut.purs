@@ -15,10 +15,10 @@ limitations under the License.
 -}
 
 module Test.StrongCheck.Data.Argonaut
-  ( ArbJson
+  ( ArbJson(..)
   , runArbJson
   , genJson
-  , ArbJCursor
+  , ArbJCursor(..)
   , runArbJCursor
   , genJCursor
   ) where
@@ -29,6 +29,7 @@ import Control.Lazy (defer)
 
 import Data.Argonaut (Json, JCursor(..), jsonEmptyObject, (~>), (:=), fromArray, fromString, fromNumber, fromBoolean, jsonNull)
 import Data.Array as A
+import Data.Newtype (class Newtype)
 
 import Test.StrongCheck.Arbitrary (class Arbitrary, arbitrary)
 import Test.StrongCheck.Gen (Gen, arrayOf, oneOf, resize, sized)
@@ -38,6 +39,10 @@ newtype ArbJson = ArbJson Json
 runArbJson ∷ ArbJson → Json
 runArbJson (ArbJson m) = m
 
+derive instance newtypeArbJson ∷ Newtype ArbJson _
+derive newtype instance eqArbJson ∷ Eq ArbJson
+derive newtype instance ordArbJson ∷ Ord ArbJson
+derive newtype instance showArbJson ∷ Show ArbJson
 instance arbitraryArbResult ∷ Arbitrary ArbJson where
   arbitrary = ArbJson <$> genJson
 
@@ -67,6 +72,10 @@ newtype ArbJCursor = ArbJCursor JCursor
 runArbJCursor ∷ ArbJCursor → JCursor
 runArbJCursor (ArbJCursor j) = j
 
+derive instance newtypeArbJCursor ∷ Newtype ArbJCursor _
+derive newtype instance eqArbJCursor ∷ Eq ArbJCursor
+derive newtype instance ordArbJCursor ∷ Ord ArbJCursor
+derive newtype instance showArbJCursor ∷ Show ArbJCursor
 instance arbJCursor ∷ Arbitrary ArbJCursor where
   arbitrary = ArbJCursor <$> genJCursor
 
