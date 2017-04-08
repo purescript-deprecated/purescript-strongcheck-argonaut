@@ -1,17 +1,5 @@
-# purescript-strongcheck-argonaut
+# DEPRECATED
 
-[![Latest release](http://img.shields.io/github/release/purescript-contrib/purescript-strongcheck-argonaut.svg)](https://github.com/purescript-contrib/purescript-strongcheck-argonaut/releases)
-[![Build status](https://travis-ci.org/purescript-contrib/purescript-strongcheck-argonaut.svg?branch=master)](https://travis-ci.org/purescript-contrib/purescript-strongcheck-argonaut)
-[![Maintainer: slamdata](https://img.shields.io/badge/maintainer-slamdata-lightgrey.svg)](http://github.com/slamdata)
+This package is no longer necessary as `genJson` is provided in [`purescript-argonaut-core`](https://github.com/purescript-contrib/purescript-argonaut-core) and `genJCursor` is provided in [`purescript-argonaut-traversals`](https://github.com/purescript-contrib/purescript-argonaut-traversals) now.
 
-`Arbitrary` instances for `purescript-argonaut`, using `purescript-strongcheck`.
-
-## Installation
-
-```
-bower install purescript-strongcheck-argonaut
-```
-
-## Documentation
-
-- Module documentation is [published on Pursuit](http://pursuit.purescript.org/packages/purescript-strongcheck-argonaut).
+The [original v1.1.0 release](https://github.com/purescript-contrib/purescript-strongcheck-argonaut/releases/v1.1.0) is still available if required.
